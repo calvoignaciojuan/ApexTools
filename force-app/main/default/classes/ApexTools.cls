@@ -62,8 +62,7 @@ public class ApexTools {
             }
         }
     }
-    
-    
+  
     //API
     public static void makeAPICallout() {
             // Define the endpoint URL
