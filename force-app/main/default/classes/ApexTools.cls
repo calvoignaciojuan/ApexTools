@@ -63,31 +63,36 @@ public class ApexTools {
         }
     }
   
-    //API
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    APIs    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //API Simple API call
     public static void makeAPICallout() {
-            // Define the endpoint URL
-            String endpoint = 'https://api.example.com/data';
-    
-            // Create an HTTP request
-            HttpRequest req = new HttpRequest();
-            req.setEndpoint(endpoint);
-            req.setMethod('GET');
-    
-            // Create an HTTP object to send the request
-            Http http = new Http();
-            
-            // Send the request and capture the response
-            HttpResponse res = http.send(req);
-    
-            // Check if the request was successful
-            if (res.getStatusCode() == 200) {
-                // Handle successful response
-                System.debug('API Response: ' + res.getBody());
-            } else {
-                // Handle error response
-                System.debug('Error: ' + res.getStatusCode() + ' - ' + res.getStatus());
-            }
+        // Define the endpoint URL
+        String endpoint = 'https://api.example.com/data';
+
+        // Create an HTTP request
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint(endpoint);
+        req.setHeader('cookie', 'notabot=true');
+        req.setMethod('GET');
+
+        // Create an HTTP object to send the request
+        Http http = new Http();
+        
+        // Send the request and capture the response
+        HttpResponse res = http.send(req);
+
+        // Check if the request was successful
+        if (res.getStatusCode() == 200) {
+            // Handle successful response
+            System.debug('API Response: ' + res.getBody());
+        } else {
+            // Handle error response
+            System.debug('Error: ' + res.getStatusCode() + ' - ' + res.getStatus());
         }
+    }
+
+    
     
     /* GET RECORDS TO EVALUATE (OLD != NEW)
      
@@ -112,49 +117,5 @@ public class ApexTools {
     
     
     
-    /*
-    Database.SaveResult[] saveResults = Database.insert(reminderNotices, false);
     
-    List<Fulfillment_Notice__c> errorNotices = new List<Fulfillment_Notice__c>();
-    for(Database.SaveResult saveResult : saveResults) {
-        if(!saveResult.isSuccess()) {
-            Fulfillment_Notice__c errorNotice = new Fulfillment_Notice__c(
-                Subject__c = 'Errors - Converting Single AR Reminder FN to Multiple',
-                To_Address__c = 'convertedsinglestateerrors+' + state.toLowerCase() + '@zbautomation.com',
-                Agency__c = agencyId
-            );
-            
-            String errorNoticeDescription = '';
-            for(Database.Error error : saveResult.getErrors()) {
-                errorNoticeDescription += error.getStatusCode() + ': ' + error.getMessage() + '\r\n';
-                errorNoticeDescription += error.getFields() + '\r\n';
-            }
-            errorNotice.Automation_Log__c = errorNoticeDescription.removeEnd('\r\n');
-            errorNotices.add(errorNotice);
-        }
-    }
-    
-    Database.insert(errorNotices); 
-    */
 }
-
-/*
-  
-    map<id, FulfillmentItem__c> FisMap = new  map<id, FulfillmentItem__c>([select id, CustomerAsset__c, status__c, subStatus__c  from FulfillmentItem__c where CustomerAsset__c in : customerAssetsToEvaluate.keyset()]);
-    system.debug('+++++++++++++++++++++++++++++++++++    FisMap.size(): ' + FisMap.keyset().size());
-    if( !FisMap.keyset().isEmpty() ){
-    //  Ca_id    FIsList
-    map<id, List<FulfillmentItem__c>> CaId_FIList = new map<id, List<FulfillmentItem__c>>();
-        
-    for(FulfillmentItem__c eachFI : FisMap.values()){                    
-        id CaId = eachFI.CustomerAsset__c;                    
-        if(CaId_FIList.keySet().contains(CaId)){    
-            List<FulfillmentItem__c> FIList = CaId_FIList.get(CaId);
-            FIList.add(eachFI);
-            CaId_FIList.put(CaId, FIList);
-        }else{                                            
-            CaId_FIList.put(CaId, new List<FulfillmentItem__c>{eachFI});
-        }
-    }
- 
- */
