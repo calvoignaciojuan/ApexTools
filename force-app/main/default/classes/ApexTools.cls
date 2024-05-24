@@ -93,6 +93,54 @@ public class ApexTools {
     }
 
     
+
+    //-----------------------------    SCREEN FLOW   ---------------------------------------
+    
+      //-------------------------    FLOW - APEX INTERFACE ( invocable method )   -----------------------------
+        @InvocableMethod(label='Lead Ordering Saved-Submit')
+        public static List<OutputVariables> leadOrderingFunction( List<InputVariablesLeadOrdering> inputVariables ){
+          
+          system.debug( ' inputVariables[0].selectedPackage ' + inputVariables[0].selectedPackage); //allways in position 0
+          system.debug( ' inputVariables[0].includedServices ' + inputVariables[0].includedServices);
+          
+          return new List<OutputVariables>();
+        }
+        public class InputVariablesLeadOrdering {
+          @InvocableVariable
+          public string selectedPackage;
+          @InvocableVariable
+          public String includedServices;          
+        }
+      
+        //if this classes are saved independently and add @auraEnabled you can create apex-define type variable in resources
+        public class OutputVariables {
+            @InvocableVariable
+            public List<String> packages;     
+            
+            @InvocableVariable
+            public List<String> upsells;
+        }
+      //-------------------------    FLOW - APEX INTERFACE ( invocable method )   -----------------------------
+
+
+      //-------------------------    HACK TO VLOOKUP EQUIVALENT IN FLOW   -----------------------------
+
+   
+      // wholeDataString = ':CA:70:TX:300:TANDIL:100:CAT:10:' -> symbol Key symbol Value Symbol ...
+      // variable type formula = =+MID(wordToFind,FIND(wholeDataString,wordToFind,1) + LEN(wholeDataString) + 1, FIND(":",wordToFind, FIND(":",wordToFind,FIND(wholeDataString,wordToFind,1) + 1) + 1 ) - FIND(":",wordToFind,FIND(wholeDataString,wordToFind,1) + 1) -1)
+      // symbol + ':'
+      @InvocableMethod(label='get string from collection')
+      public static String convertTableToString_symbolKeySymbolValueSymbol( List<objectName__C> inputVariable ){
+        //we have to loop through the collection and st
+        string symbol = ':';
+        string result = '';
+        for( string eachdata : inputVariable ){
+          result =  result + symbol + eachdata;
+        }
+        result = result + symbol;
+        return result;
+      }    
+
     
     /* GET RECORDS TO EVALUATE (OLD != NEW)
      
