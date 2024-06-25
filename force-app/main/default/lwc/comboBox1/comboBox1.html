@@ -1,0 +1,22 @@
+<template>
+  <div class="slds-m-around_medium">
+    <lightning-card  title="Sales Quote">          
+        <h1>Record Id: {recordId}</h1>
+        <br>
+        <lightning-combobox
+            name="state"
+            label="State"
+            value={value}
+            placeholder="Select State"
+            options={picklistValues}
+            onchange={handleChange}>
+        </lightning-combobox>
+        <p>Selected value is: {value}</p>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        
+        <!-- Brand variant: Identifies the primary action in a group of buttons -->
+        <lightning-button variant="brand" label="Brand" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>      
+    </lightning-card>
+  </div>
+</template>
