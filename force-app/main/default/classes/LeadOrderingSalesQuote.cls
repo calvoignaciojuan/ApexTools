@@ -94,15 +94,7 @@ public class LeadOrderingSalesQuote {
     
     @InvocableMethod(label='Lead Ordering Saved-Submit')
     public static List<OutputVariables> leadOrderingFunction( List<InputVariablesLeadOrdering> inputVariables ){
-        /*        
-        system.debug( ' inputVariables[0].leadRecord ' + inputVariables[0].leadRecord);
-        system.debug( ' inputVariables[0].salesQuoteRecord ' + inputVariables[0].salesQuoteRecord);
-        system.debug( ' inputVariables[0].planDetailsRecord ' + inputVariables[0].planDetailsRecord);
-        system.debug( ' inputVariables[0].includedServices ' + inputVariables[0].includedServices);
-        system.debug( ' inputVariables[0].selectedUpsells ' + inputVariables[0].selectedUpsells);
-        system.debug( ' inputVariables[0].submitCheckbox ' + inputVariables[0].submitCheckbox);
-        system.debug( ' inputVariables[0].isNewQuote ' + inputVariables[0].isNewQuote);
-        */
+  
         List<OutputVariables> output = new List<OutputVariables>();
         OutputVariables outputZero = new OutputVariables();
         output.add(outputZero);
@@ -286,7 +278,7 @@ public class LeadOrderingSalesQuote {
         //phone
         String rawPhoneNumber = leadRecord.phone;
         String nonNumericRegex = '[^0-9]';
-		String cleanedPhoneNumber = rawPhoneNumber.replaceAll(nonNumericRegex, '');
+		    String cleanedPhoneNumber = rawPhoneNumber.replaceAll(nonNumericRegex, '');
         string phoneNumber = cleanedPhoneNumber;
         String email = leadRecord.Email;
         String leadUuId = leadRecord.Lead_UUID__c;
@@ -314,22 +306,22 @@ public class LeadOrderingSalesQuote {
             
             when 'Starter Plan'{
                 
-                String EIN_bundle_choice = '              \"no\": \"ein-docs-no\"';
-                if( salesQuoteRecord.EIN_Business_Documents_Upsell__c ){
-                    EIN_bundle_choice = '              \"yes\": \"ein-biz-yes\"';
-                }else{
-                    if( salesQuoteRecord.Just_Business_Documents_Upsell__c ){
-                        EIN_bundle_choice = '              \"onlyDocs\": \"biz-docs-only\"';
-                    }else{
-                        if( salesQuoteRecord.Just_EIN_Upsell__c ){
-                            EIN_bundle_choice = '              \"onlyEIN\": \"ein-only\"';
-                        }
-                    }
-                }
-                string rush_choice = salesQuoteRecord.Rush_Service_Upsell__c ? '              \"rush\": \"rush\"' : '              \"no\": \"no\"' ;
-                string staticWebside_choice = salesQuoteRecord.Business_Website_Upsell__c ? '              \"yes\": \"yes\"' : '              \"no\": \"no\"' ;
-                string zbMoneyPro_choice = salesQuoteRecord.ZB_Money_Pro_Upsell__c ? '              \"monthly\": \"zbmoney-monthly\"' : '              \"no\": \"zbmoney-no\"' ;
-				string preferred_choice = salesQuoteRecord.ZB_Banking_Upsell__c ? '              \"yes\": \"yes\"' : '              \"no\": \"no\"' ;
+              String EIN_bundle_choice = '              \"no\": \"ein-docs-no\"';
+              if( salesQuoteRecord.EIN_Business_Documents_Upsell__c ){
+                  EIN_bundle_choice = '              \"yes\": \"ein-biz-yes\"';
+              }else{
+                  if( salesQuoteRecord.Just_Business_Documents_Upsell__c ){
+                      EIN_bundle_choice = '              \"onlyDocs\": \"biz-docs-only\"';
+                  }else{
+                      if( salesQuoteRecord.Just_EIN_Upsell__c ){
+                          EIN_bundle_choice = '              \"onlyEIN\": \"ein-only\"';
+                      }
+                  }
+              }
+              string rush_choice = salesQuoteRecord.Rush_Service_Upsell__c ? '              \"rush\": \"rush\"' : '              \"no\": \"no\"' ;
+              string staticWebside_choice = salesQuoteRecord.Business_Website_Upsell__c ? '              \"yes\": \"yes\"' : '              \"no\": \"no\"' ;
+              string zbMoneyPro_choice = salesQuoteRecord.ZB_Money_Pro_Upsell__c ? '              \"monthly\": \"zbmoney-monthly\"' : '              \"no\": \"zbmoney-no\"' ;
+				      string preferred_choice = salesQuoteRecord.ZB_Banking_Upsell__c ? '              \"yes\": \"yes\"' : '              \"no\": \"no\"' ;
              	string operatingAgreement_choice = salesQuoteRecord.Operating_Agreement_Template_Upsell__c ? '              \"yes\": \"yes\"' : '              \"no\": \"no\"' ;
              	string worryFree_choice = salesQuoteRecord.Worry_Free_Compliance_Upsell__c ? '              \"yes\": \"yes\"' : '              \"no\": \"no\"' ;
              	string registeredAgent_choice = salesQuoteRecord.Registered_Agent_Service_Upsell__c ? '              \"yes\": \"ra-yes\"' : '              \"no\": \"ra-no\"' ;   
