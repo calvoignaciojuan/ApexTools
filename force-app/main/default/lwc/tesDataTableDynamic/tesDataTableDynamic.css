@@ -1,0 +1,96 @@
+/* Container Styling */
+.container {
+  height: 100%; /* Ensures the container stretches full height */
+  display: flex;
+  /* flex-direction: row; */
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 3;
+  background-color: #f4f6f9; /* Light background color for distinction */
+  padding: 1rem; /* Add spacing inside the panel */
+  border-right: 1px solid #d8dde6; /* Add a subtle border between panels */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.left-panel .slds-media__body{
+  margin-right: 10px;
+}
+
+.left-panel h1 {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: large;
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 1;
+  padding: 1rem; /* Add spacing inside the panel */
+  background-color: #ffffff; /* Standard white background for details */
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Table Container */
+.table-container {
+  max-height: 400px; /* Limit table height for scrollability */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin-bottom: 1rem;
+}
+
+/* Custom Table */
+.custom-table {
+  width: 100%; /* Full width table */
+  border-collapse: collapse; /* Remove gaps between table cells */
+}
+
+.custom-table th,
+.custom-table td {
+  text-align: left;
+  padding: 0.5rem;
+  border: 1px solid #d8dde6; /* Light border for structure */
+}
+
+.custom-table th {
+  background-color: #f3f3f3; /* Light grey background for headers */
+  font-weight: bold;
+}
+
+/* Lightning Button Styles */
+.slds-button {
+  margin-top: 0.5rem; /* Add spacing above buttons */
+}
+
+/* Toggle Button Container */
+.slds-m-top_medium {
+  text-align: center; /* Center-align the toggle button */
+  margin-top: 1rem; /* Space above the button */
+}
+
+
+.slds-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+/* Right panel */
+
+
+
+.right-panel {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+}
+
+.hide-panel {
+  align-self: flex-end;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}

@@ -10,7 +10,7 @@ public class LeadOrderingAPI {
     }
 
     //Parent to Child Query
-    List<Account> accList = [SELECT Id, Name, (select id, name from Contacts) FROM Account where id = '001Hn00001yYERRIA4'];
+    List<Account> accList = [SELECT Id, Name, (select id, name from Contacts) FROM Account ];
 
     for(Account eachAcc : accList){
       system.debug('---------');

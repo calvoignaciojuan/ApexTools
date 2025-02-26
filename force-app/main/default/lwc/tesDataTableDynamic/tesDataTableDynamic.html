@@ -1,0 +1,128 @@
+<template>
+  <div class="slds-grid slds-gutters container">
+    <!-- Left Panel: Small Table -->
+    <div class="slds-col slds-size_1-of-3 left-panel">
+      <lightning-card>
+        <div class="slds-card__body">
+          <!-- Filters Header -->
+          <header class="slds-media slds-media_center slds-has-flexi-truncate slds-p-bottom_small slds-grid slds-grid_align-center">
+            <div class="slds-media__tableTitle">
+              <h1 class= "table-tittle">
+                <span>Table Label</span> 
+              </h1>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title slds-grid_align-end">
+                <span>Filters</span> 
+              </h2>
+            </div>
+            <div class="slds-no-flex slds-grid slds-grid_vertical-align-center">
+              <lightning-button-menu menu-alignment="auto" alternative-text="Toggle Fund Filter" icon-name="utility:filterList">
+                <lightning-checkbox-group name="Funds" label="Funds" options={allFunds} value={fundValue} 
+                  onchange={handleFilterFunds}>
+                </lightning-checkbox-group>
+              </lightning-button-menu>
+              <lightning-button-menu menu-alignment="auto" alternative-text="Toggle Company Filter" icon-name="utility:filterList">
+                <lightning-checkbox-group name="Companies" label="Companies" options={allCompanies} value={companyValue} 
+                  onchange={handleFilterCompanies}>
+                </lightning-checkbox-group>
+              </lightning-button-menu>
+            </div>
+          </header>         
+
+          <!-- Table Content -->
+          <div class="table-container slds-scrollable_y">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Company</th>
+                  <template for:each={columns} for:item="column">
+                    <template if:true={column.showColumn}>
+                      <th scope="col" key={column.id}>{column.label}</th>
+                    </template>
+                  </template>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={data} for:item="parent">  
+                  <template if:true={parent.showLine}>
+                    <tr key={parent.id}>
+                      <td>{parent.name}</td>
+                      <template for:each={parent.relatedRecords} for:item="record">
+                        <template if:true={record.showColumn}>
+                          <td key={record.columnId}>
+                            <template if:true={record.records.length}>
+                              <ul>
+                                <template for:each={record.records} for:item="child">
+                                  <li key={child.id} class="slds-grid slds-grid_align-spread slds-p-around_xx-small">
+                                    <a href="javascript:void(0);" data-record-id={child.id} 
+                                      onclick={handleOpenOpportunity}>
+                                      {child.name} - {child.stage}
+                                    </a>
+                                    <lightning-button-menu alternative-text="Show menu" variant="border-filled" icon-size="x-small" menu-alignment="auto">
+                                      <lightning-menu-item value="details" label="Show Details"
+                                          data-record-id={child.id} onclick={handleButtonClickshowDetails}></lightning-menu-item>
+                                      <lightning-menu-item value="comment" label="Add Comment"
+                                          data-record-id={child.id} onclick={handleButtonClick}></lightning-menu-item>
+                                    </lightning-button-menu>
+                                  </li>
+                                  <li key={child.name} class="slds-grid slds-grid_align-spread slds-p-around_xx-small">
+                                      Data Room Campaign
+                                  </li>
+                                </template>
+                              </ul>
+                            </template>
+                            <template if:false={record.records.length}>
+                              <lightning-button label="New Opportunity" 
+                                   data-id1={parent.id} data-id2={record.columnId} onclick={handleNewOpportunityWithRecordPageView}>    <!--handleNewOpportunityWithoutRecordPageView -->
+                              </lightning-button>
+                            </template>
+                          </td>
+                        </template>
+                      </template>
+                    </tr>
+                  </template>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </lightning-card>
+    </div>
+
+    <!-- Right Panel: Record Details -->
+    <template if:true={isRightPanelVisible}>
+      <div class="slds-col right-panel">
+          <lightning-button-icon
+              class="hide-panel"
+              icon-name="utility:close"
+              alternative-text="Hide Panel"
+              variant="bare"
+              onclick={handleHidePanel}>
+          </lightning-button-icon>
+          <lightning-card title="Record Details">          
+              <!-- Body Content -->
+              <div class="slds-card__body">
+                  <template if:true={selectedRecordForDetails}>
+                      <lightning-record-edit-form record-id={selectedRecordForDetails} object-api-name="Opportunity">
+                        <div class="slds-box">
+                          <lightning-input-field field-name="Name"></lightning-input-field>
+                          <lightning-input-field field-name="StageName"></lightning-input-field>
+                          <lightning-output-field field-name="Amount"></lightning-output-field>                          
+                          <lightning-output-field field-name="CloseDate"></lightning-output-field>
+                          <lightning-output-field field-name="AccountId"></lightning-output-field>
+                          <lightning-output-field field-name="Fund__c"></lightning-output-field>                           
+                          <div class="slds-var-m-top_medium">
+                            <lightning-button variant="brand" type="submit" label="Save">
+                            </lightning-button>
+                          </div>    
+                        </div>                                               
+                      </lightning-record-edit-form>
+                  </template>
+              </div>
+          </lightning-card>
+      </div>
+    </template>
+
+  </div>
+</template>
