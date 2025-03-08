@@ -267,3 +267,21 @@ public class LeadOrderingAPI {
       }
      
 }
+
+
+
+Trigger AccountTrigger on Account (before insert, after insert, before update, after update, before delete, after delete, after undelete) { 
+  
+  if (trigger.isBefore) {
+    if (trigger.isInsert) AccountTriggerHandler.onBeforeInsert(trigger.new);
+    if (trigger.isUpdate) AccountTriggerHandler.onBeforeUpdate(trigger.old, trigger.oldMap, trigger.new, trigger.newMap);
+    if (trigger.isDelete) AccountTriggerHandler.onBeforeDelete(trigger.old, trigger.oldMap);
+  }
+  
+  if (trigger.isAfter) {
+    if (trigger.isInsert) AccountTriggereandler.onAfter Insert (trigger.new, trigger.newMap);
+    if (trigger.isUpdate) AccountTriggerHandler.onAfterUpdate(trigger.old, trigger.oldMap, trigger.new, trigger.newMap);
+    if (trigger.isDelete) AccountTriggerHandler.onAfterDelete (trigger.old, trigger.oldMap);
+    if (trigger.isUndelete) Account TriggerHandler.onAfterUndelete(trigger.new, trigger.newMap);
+  } 
+}
