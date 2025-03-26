@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Contact List - Select to Update">
+        <div class="slds-p-around_medium">
+            
+            <!-- 🔄 Loading Spinner -->
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+            </template>
+            
+            <template if:true={contactListOptions.length}>                 
+                <lightning-radio-group  
+                                    label="Contacts"
+                                    options={contactListOptions}
+                                    value={value}
+                                    type="radio"
+                                    onchange={handleChangeOnRadioGroup} required>
+                </lightning-radio-group>                            
+                <div class="slds-grid slds-gutters slds-p-around_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input type="text" label="Actual Name" value={selectedContactName} disabled></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input type="text" label="New First Name" value={newFirstName} onchange={handleInputChanged}></lightning-input>
+                    </div>
+                </div>
+                <lightning-button
+                    label="Update Contact Name"
+                    variant="brand"
+                    onclick={handleClickUpdate}
+                    class="slds-m-top_medium">
+                </lightning-button>                
+            </template>
+            <template if:true={error.length}>
+                <p class="slds-text-color_error">Error loading contacts.</p>
+            </template> 
+          
+        </div>
+    </lightning-card>
+</template>

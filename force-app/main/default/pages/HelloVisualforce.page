@@ -1,0 +1,15 @@
+<apex:page controller="HelloController">
+    <apex:form >
+        <apex:pageBlock title="Visualforce Example">
+            <apex:pageBlockSection >
+                <apex:outputLabel value="Enter Your Name:" />
+                <apex:inputText value="{!name}" />
+                <apex:commandButton value="Submit" action="{!sayHello}" rerender="outputPanel"/>
+            </apex:pageBlockSection>
+
+            <apex:outputPanel id="outputPanel">
+                <apex:outputText value="{!greeting}" rendered="{!NOT(ISNULL(greeting))}"/>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,9 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="message" type="String" default="Hello, Aura!" />
+    
+    <p>Record ID: {!v.recordId}</p>
+    <p>{!v.message}</p>
+    <lightning:button label="Click Me" onclick="{!c.handleClick}" />
+    
+</aura:component>

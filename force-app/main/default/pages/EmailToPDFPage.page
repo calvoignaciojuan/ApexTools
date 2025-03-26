@@ -1,0 +1,6 @@
+<apex:page controller="VisualForcePagePDFController"  applyHtmlTag="false" applyBodyTag="false" title="PDF generator" showHeader="false">
+	<apex:form >        
+    	<apex:outputtext value="{!acc.EmailBody__c}" escape="false"/>     
+    	      
+    </apex:form>	  
+</apex:page>

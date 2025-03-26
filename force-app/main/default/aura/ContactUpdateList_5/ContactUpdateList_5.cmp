@@ -1,0 +1,51 @@
+<aura:component controller="ContactControllerApex" implements="flexipage:availableForAllPageTypes">
+
+   <aura:attribute name="contactsOptions" type="List" />    
+   <aura:attribute name="contactsList" type="List" />    
+   <aura:attribute name="contactsMap" type="Map" />
+
+   <aura:attribute name="selectedContactId" type="String" /> 
+   <aura:attribute name="newFirstName" type="String" />
+   <aura:attribute name="oldFirstName" type="String" />
+
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+   <lightning:card title="Contact Manager - (Aura Comp 5)" class="slds-m-around_medium">
+      <div class="slds-m-around_medium">                      
+         <p><strong>Contact List:</strong></p>
+
+         <!-- Contact List with Radio Buttons -->
+         <lightning:radioGroup  name="contactRadioGroup"
+                                label="Contacts"
+                                options="{!v.contactsOptions}"
+                                value="{!v.selectedContactId}"
+                                type="radio"
+                                onchange="{!c.handleSelection}"
+                                required="true" />
+
+         <!-- Display selected contact -->
+
+         <!-- <ul>
+               <aura:iteration items="{!v.contactsList}" var="contact">
+                  <li>
+                     <lightning:formattedText value="{!contact.FirstName + ' ' + contact.LastName + ' - ' + contact.Email}" />
+                     <lightning:button label="Select contact to edit" value="{!contact.Id}" onclick="{!c.selectContact}" />
+                  </li>
+               </aura:iteration>
+         </ul> -->
+      </div>
+      <div class="slds-m-around_small">
+         <br></br>
+         <p> Selected Contact Id: {!v.selectedContactId}</p>
+         <div class="slds-grid slds-gutters">             
+            <div class="slds-col">
+               <lightning:input label="Actual First Name" value="{!v.oldFirstName}" disabled="true"/>
+            </div>
+            <div class="slds-col">
+               <lightning:input label="New First Name" value="{!v.newFirstName}" />
+            </div>
+         </div>
+         <lightning:button label="Update Contact" variant="brand" onclick="{!c.updateContact}" class="slds-m-top_medium" />
+      </div>
+   </lightning:card>
+</aura:component>

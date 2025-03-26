@@ -1,0 +1,25 @@
+<apex:page controller="AccountManagerController">
+    <apex:form >
+        <apex:pageBlock title="Account Manager">
+            <apex:pageBlockTable value="{!accounts}" var="acc">
+                <apex:column headerValue="Account Name">
+                    <apex:inputText value="{!acc.Name}" />
+                </apex:column>
+                <apex:column headerValue="Industry">
+                    <apex:selectList value="{!acc.Industry}" size="1">
+                        <apex:selectOption itemValue="Technology" itemLabel="Technology"/>
+                        <apex:selectOption itemValue="Finance" itemLabel="Finance"/>
+                        <apex:selectOption itemValue="Healthcare" itemLabel="Healthcare"/>
+                        <apex:selectOption itemValue="Other" itemLabel="Other"/>
+                    </apex:selectList>
+                </apex:column>
+            </apex:pageBlockTable>
+
+            <apex:commandButton value="Save Changes" action="{!saveAccounts}" rerender="confirmationPanel"/>
+        </apex:pageBlock>
+
+        <apex:outputPanel id="confirmationPanel">
+            <apex:outputText value="Accounts Updated Successfully!" rendered="{!updateSuccess}" style="color: green;"/>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Contact List (via @wire)">
+        <template if:true={contacts.data}>
+            <ul>
+                <template for:each={contacts.data} for:item="contact">
+                    <li key={contact.Id}>
+                        {contact.FirstName} {contact.LastName} - {contact.Email}
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template if:true={contacts.error}>
+            <p class="slds-text-color_error">Error loading contacts.</p>
+        </template>
+    </lightning-card>
+</template>

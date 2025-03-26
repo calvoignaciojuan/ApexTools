@@ -1,0 +1,27 @@
+<aura:component controller="AccountControllerAuraThree" implements="flexipage:availableForAllPageTypes" access="global">
+
+    <aura:attribute name="accounts" type="List" />
+    <aura:attribute name="newAccountName" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <h1> AccountController - AuraThree </h1>
+
+    <lightning:card title="Account Manager" class="slds-m-around_medium">
+        <!-- Display List of Accounts -->
+        <div class="list-container">
+            <p><strong>Existing Accounts:</strong></p>
+            <ul>
+                <aura:iteration items="{!v.accounts}" var="acc">
+                    <li>{!acc.Name}</li>
+                </aura:iteration>
+            </ul>
+        </div>
+
+        <!-- Form to Add New Account -->
+        <div class="form-container">
+            <lightning:input label="New Account Name" value="{!v.newAccountName}" />
+            <lightning:button label="Create Account" variant="brand" onclick="{!c.createAccountController}" class="slds-m-top_medium" />
+        </div>
+    </lightning:card>
+</aura:component>

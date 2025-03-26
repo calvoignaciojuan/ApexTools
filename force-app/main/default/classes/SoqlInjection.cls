@@ -1,6 +1,6 @@
 public with sharing class SoqlInjection {
 
-    public static void typesOfinjections(){
+    public static void typesOfinjectionsTesting(){
 
       String queryHacker = 'x%\' OR Name LIKE \'';
       system.debug('Input Query queryHacker: ' + queryHacker);

@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Parent Component">
+        <div class="slds-p-around_medium">
+            <p><strong>Full Name:</strong> {fullName}</p>
+            <c-lwc8parent-child-comm_-child name={fullName} onnamechange={handleNameChange}></c-lwc8parent-child-comm_-child>
+        </div>
+    </lightning-card>
+</template>
