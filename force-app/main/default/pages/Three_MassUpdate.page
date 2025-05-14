@@ -1,0 +1,19 @@
+<apex:page standardController="Account" recordSetVar="accounts" extensions="AccountMassUpdater">
+    <apex:form>
+        <apex:pageBlock title="Mass Update Accounts">
+            <apex:pageBlockTable value="{!accounts}" var="acc" width="100%" title="Accounts">
+                <apex:column>
+                    <apex:inputCheckbox value="{!acc.selected}" />
+                </apex:column>
+                <apex:column value="{!acc.Name}" />
+                <apex:column value="{!acc.Industry}" />
+            </apex:pageBlockTable>
+
+            <apex:pageBlockSection title="Update Field">
+                <apex:inputField value="{!accounts.record.Industry}" />
+            </apex:pageBlockSection>
+
+            <apex:commandButton action="{!updateIndustry}" value="Update Industry" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

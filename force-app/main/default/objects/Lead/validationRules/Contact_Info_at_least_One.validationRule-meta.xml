@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Info_at_least_One</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK( MobilePhone )  &amp;&amp; 
+  ISBLANK( Email ) &amp;&amp; 
+  ISBLANK( Website )</errorConditionFormula>
+    <errorMessage>Please provide at least one of the following fields: Mobile, Email, Website</errorMessage>
+</ValidationRule>

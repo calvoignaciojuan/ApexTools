@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:handler name="childMessage" event="c:MessageEvent" action="{!c.handleChildMessage}"/>   
+    <aura:attribute name="receivedMessage" type="String"/>
+
+    <lightning:card title="Component communication - (Aura Comp 6)" class="slds-m-around_medium">    
+        <div class="slds-p-around_medium">
+            <p><strong>Message from child:</strong> {!v.receivedMessage}</p> <br />            
+            <c:Aura6Child />
+        </div>          
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,7 @@
+trigger OrderEventTrigger on Order_Confirmed__e(after insert){
+
+    for(Trigger.new : eachNewEvent){
+        System.debug('eachNewEvent.id:' + eachNewEvent.id);
+    }
+    
+}

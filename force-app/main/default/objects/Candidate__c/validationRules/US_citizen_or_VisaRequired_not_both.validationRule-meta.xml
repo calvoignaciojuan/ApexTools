@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>US_citizen_or_VisaRequired_not_both</fullName>
+    <active>true</active>
+    <errorConditionFormula>Are_you_a_US_citizen__c  &amp;&amp;  Do_you_need_visa__c</errorConditionFormula>
+    <errorMessage>you can not be US citizen and require a visa at the same time</errorMessage>
+</ValidationRule>

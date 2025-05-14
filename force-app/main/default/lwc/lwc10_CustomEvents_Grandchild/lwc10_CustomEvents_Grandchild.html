@@ -1,0 +1,10 @@
+<template>
+    <div onsayhello={handleSayHelloInnerParent} >      
+        <div class="grandChild" onsayhello={handleSayHello} style="border: 1px solid black; padding: 10px; margin: 10px;">
+            <p>--- GRANDCHILD COMPONENT ---</p> <br/>
+            <button onclick={handleClickNoBubblesNoComposed}>Event Bubbles: FALSE Composed: FALSE  (default)</button>
+            <button onclick={handleClickBubblesNoComposed}>Event Bubbles: TRUE Composed: FALSE</button>
+            <button onclick={handleClickBubblesComposed}>Event Bubbles: TRUE Composed: TRUE</button>
+        </div>  
+    </div>  
+</template>

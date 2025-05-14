@@ -1,0 +1,14 @@
+<apex:page >
+
+        <!-- Load CSS -->
+        <apex:stylesheet value="{!URLFOR($Resource.archives, 'site.css')}" />
+    
+        <!-- Load JS -->
+        <!-- <apex:includeScript value="{!URLFOR($Resource.MyScripts, 'site.js')}" /> -->
+    
+        <!-- Load Image -->
+        <img src="{!URLFOR($Resource.archives, 'profile.png')}" alt="Logo" />
+    
+        <h1>Welcome to My Page!</h1>
+   
+</apex:page>

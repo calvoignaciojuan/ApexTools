@@ -1,0 +1,20 @@
+<apex:page standardController="Account" recordSetVar="accounts">
+    <apex:form>
+        <apex:pageBlock title="Standard List Controller - Edit Accounts (without Apex)">
+            <apex:pageBlockTable value="{!accounts}" var="acc">
+                <apex:column headerValue="Name">
+                    <apex:inputField value="{!acc.Name}" />
+                </apex:column>
+                <apex:column headerValue="Industry">
+                    <apex:inputField value="{!acc.Industry}" />
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:inputField value="{!acc.Phone}" />
+                </apex:column>
+            </apex:pageBlockTable>
+
+            <apex:commandButton action="{!save}" value="Save Changes" />
+            <apex:commandButton action="{!cancel}" value="Cancel" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:registerEvent name="childMessage" type="c:MessageEvent"/>    
+    <p><strong>child</strong></p>
+    <lightning:button label="Send Message to Parent" onclick="{!c.sendMessage}"/>
+</aura:component>

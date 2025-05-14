@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecordType_1</fullName>
+    <active>true</active>
+    <label>RecordType_1</label>
+    <picklistValues>
+        <picklist>Favourite__c</picklist>
+        <values>
+            <fullName>Apple</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chocholate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ice Cream</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Phase 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phase 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phase 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phase 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phase 5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

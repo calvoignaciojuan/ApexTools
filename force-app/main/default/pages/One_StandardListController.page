@@ -1,0 +1,17 @@
+<apex:page standardController="Account" recordSetVar="accounts">
+    <apex:form>
+        <apex:pageBlock title="Account List (Standard List Controller)  (without Apex)">
+            <apex:pageBlockTable value="{!accounts}" var="acc">
+                <apex:column value="{!acc.Name}" />
+                <apex:column value="{!acc.Industry}" />
+                <apex:column value="{!acc.Phone}" />
+            </apex:pageBlockTable>
+
+            <apex:panelGrid columns="3" style="margin-top:10px;">
+                <apex:commandLink action="{!previous}" value="Previous" rendered="{!hasPrevious}" />
+                <apex:outputText value="Page {!pageNumber}" />
+                <apex:commandLink action="{!next}" value="Next" rendered="{!hasNext}" />
+            </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

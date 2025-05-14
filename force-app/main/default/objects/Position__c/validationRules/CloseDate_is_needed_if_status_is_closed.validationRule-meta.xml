@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CloseDate_is_needed_if_status_is_closed</fullName>
+    <active>true</active>
+    <description>Closed date is required whenever status is closed</description>
+    <errorConditionFormula>OR(
+     AND(
+        OR(ISPICKVAL(Status__c , &apos;Closed - Filled&apos;), 
+          ISPICKVAL(Status__c , &apos;Closed - Not Approved&apos;), 
+          ISPICKVAL(Status__c , &apos;Closed - Canceled&apos;) 
+        ),
+        ISBLANK( Close_Date__c )
+      ),
+     AND(
+         NOT(ISBLANK( Close_Date__c )),
+         NOT(
+            OR(
+               ISPICKVAL(Status__c , &apos;Closed - Filled&apos;), 
+               ISPICKVAL(Status__c , &apos;Closed - Not Approved&apos;), 
+               ISPICKVAL(Status__c , &apos;Closed - Canceled&apos;) 
+              )
+         )
+      )
+)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Please provide a close date or correct status</errorMessage>
+</ValidationRule>

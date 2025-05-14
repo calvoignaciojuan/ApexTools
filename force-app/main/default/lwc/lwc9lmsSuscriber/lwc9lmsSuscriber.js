@@ -30,3 +30,7 @@ export default class SubscriberComponent extends LightningElement {
         this.unsubscribeToMessageChannel();
     }
 }
+
+
+
+

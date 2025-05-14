@@ -10,6 +10,8 @@ public with sharing class SoqlInjection {
       system.debug('fullQuery_vulnerable: ' + fullQuery_vulnerable);
       system.debug('fullQuery_vulnerable query records size: ' + dataBase.query(fullQuery_vulnerable).size());
 
+      system.debug('----- Solutions -----');
+
       system.debug('-------------------  fullQuery_bindVariable  -------------------------------');
       String queryInput = '%' + queryHacker + '%';
       String fullQuery_bindVariable = 'Select id, Name from Account where Name like :queryInput';
